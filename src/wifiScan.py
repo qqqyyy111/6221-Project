@@ -48,7 +48,7 @@ def scanWifi():
 
         #list = wifilist
         #df = pd.DataFrame(list, columns=["ssid", "bssid", "auth_types", "key_types", "signal"])
-        #df.to_csv(r"C:\Users\asus\Desktop\WiFiLocating-master\test001", index=False)
+        #df.to_csv(r"C:\Users\asus\Desktop\6221Project\data\test003", index=False)
 
     return wifilist
 
