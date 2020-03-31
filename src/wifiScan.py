@@ -3,7 +3,6 @@ import time
 import pandas as pd
 import re
 import math
-from sqlalchemy import create_engine
 
 
 NONE = 0
@@ -71,8 +70,8 @@ def scanWifi():
         wifi.append(freq)
 
         wifilist.append(wifi)
-        #print(wifi)
 
+    #print(wifilist)
     return wifilist
 
 def write_to_csv():
@@ -80,13 +79,4 @@ def write_to_csv():
     df = pd.DataFrame(list, columns=["ssid", "bssid", "auth_types", "key_types", "signal", "freq"])
     df.to_csv(r"C:\Users\asus\Desktop\6221Project\data\test005", index=False)
 
-def write_to_mysql():
-    list = wifilist
-    engine = create_engine('mysql+pymysql://root:971005@localhost:3306/wifi?charset=utf8')
-    df = pd.DataFrame(list, columns=["ssid", "bssid", "auth_types", "key_types", "signal", "frequency"])
-    df.to_sql(name='wifi_info', con=engine, if_exists='append', index=False)
 
-
-
-scanWifi()
-write_to_mysql()

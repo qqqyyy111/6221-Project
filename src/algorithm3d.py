@@ -1,7 +1,6 @@
 import sys
 import numpy as np
 
-#np.seterr(divide='ignore', invalid='ignore')
 def trilaterate3D(data):
     # x,y,z
     p1 = np.array(data[0][:3])
@@ -26,10 +25,10 @@ def trilaterate3D(data):
     x = ((r1 ** 2) - (r2 ** 2) + (d ** 2)) / (2 * d)
     y = (((r1 ** 2) - (r3 ** 2) + (i ** 2) + (j ** 2)) / (2 * j)) - ((i / j) * (x))
 
-    print(x)
-    print(y)
-    z1 = np.sqrt(r1 ** 2 - x ** 2 - y ** 2)
-    z2 = np.sqrt(r1 ** 2 - x ** 2 - y ** 2) * (-1)
+    #print(x)
+    #print(y)
+    z1 = np.sqrt(abs(r1 ** 2 - x ** 2 - y ** 2))
+    z2 = np.sqrt(abs(r1 ** 2 - x ** 2 - y ** 2)) * (-1)
 
     ans1 = p1 + (x * e_x) + (y * e_y) + (z1 * e_z)
     ans2 = p1 + (x * e_x) + (y * e_y) + (z2 * e_z)
@@ -40,20 +39,3 @@ def trilaterate3D(data):
     else:
         return ans2
 
-
-if __name__ == "__main__":
-
-    data = [[0, 0, 0, 2.096],
-            [4.3, 0, 0, 5.511],
-            [4.3, 3, 2, 6.291],
-            [0, 3, 0, 1.445]]
-
-    # Print out the data
-    print("The input four points and distances, in the format of [x, y, z, d], are:")
-    for p in range(0, len(data)):
-        print(data[p])
-
-        # Call the function and compute the location
-    location = trilaterate3D(data)
-
-    print("The location of the point is: " + str(location))
