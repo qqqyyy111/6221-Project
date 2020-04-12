@@ -20,24 +20,14 @@ def get_namedist():
     namedist = []
     for i in range(len(name)):
         namedist.append([name[i], distance[i]])
+    #print(namedist)
     return namedist
 
-    # location
-    '''
-    xc, yc = algorithm.intersection(self.points, self.radius)
-    if xc == -1 and yc == -1:
-        print('error')
-    else:
-        x1, y1 = (xc - 3), (yc - 3)
-        x2, y2 = (xc + 3), (yc + 3)
-      
 
-    print(xc,yc)
-    '''
 
 def signalToDis(sig):
     A = 36
-    n = 2.5
+    n = 3.0
     return 10 ** ((-int(sig) - A) / (10 * n))
 
     #exp = (27.55-(20* math.log10(int(fre)/1000)) + abs(int(sig))) / 20.0
